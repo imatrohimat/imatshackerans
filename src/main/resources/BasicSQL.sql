@@ -63,3 +63,19 @@ SELECT ROUND(SUM(LAT_N),2), ROUND(SUM(LONG_W),2) FROM STATION
 
 
 --we will calculate two summations, sum of latitude and sum of longtitude,the result should be rounded to 2 decimal places.
+
+
+
+--Query the Western Longitude (LONG_W) for the largest Northern Latitude (LAT_N) in STATION that is less than . Round your answer to  decimal places.
+
+SELECT ROUND(LONG_W, 4) FROM STATION WHERE LAT_N = (SELECT MAX(LAT_N) FROM STATION WHERE LAT_N < 137.2345)
+--
+--Analysis
+--This question asks for the longitude of the largest latitude in station table having latitude less than 137.2345. We will have the table
+--select round(long_w, 4)
+--from station
+--
+--    where lat_n = (select max(lat_n) from station where lat_n < 137.2345 ORDER BY LAT_N  DESC )
+--
+--Note:
+--when using max, the order of the table is not important; when suing limit, the order of the list will matter as the limit/top select from the top of the list
